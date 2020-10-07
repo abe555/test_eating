@@ -1,0 +1,26 @@
+<div class="tag_list">
+	<% @tag_list.each do |list| %>
+		<span>
+			<%= link_to list.tab_name, tag_posts_path(tag_id: list.id) %>
+			<p>(list.posts.count)</p>
+		</span>
+	<% end %>
+</div>
+
+<div class="new_post">
+	<%= form_with(model: @post, url: posts_path, local: ture) do |f| %>
+		<%= f.text_area :content %>
+		<p>
+			スペースを入力することで複数のタグをつけることが出来ます。<br>
+			例：音楽 文芸 スポーツ
+		</p>
+		<%= f.text_field :tag_name %>
+		<%= f.submit %>
+	<% end %>
+</div>
+
+<div class="post_index">
+	<% posts.each do |post| %>
+		<%= link_to post.content, post_path(post_id) %>
+	<% end %>
+</div>
