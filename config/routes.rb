@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'posts#index'
+  root 'posts#index'
 
   resources :posts, :except => [:index]
 
